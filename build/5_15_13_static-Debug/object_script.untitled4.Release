@@ -1,0 +1,15 @@
+release/holodwindow.o
+release/main.o
+release/mainwindow.o
+release/qdialogusers.o
+release/sendmessageuser.o
+release/socketmanager.o
+release/userchatbutton.o
+release/untitled4_plugin_import.o
+release/qrc_resources.o
+release/moc_holodwindow.o
+release/moc_mainwindow.o
+release/moc_qdialogusers.o
+release/moc_sendmessageuser.o
+release/moc_socketmanager.o
+release/moc_userchatbutton.o

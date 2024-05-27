@@ -1,0 +1,111 @@
+/* Базовый шрифт и цвет текста */
+QWidget {
+    font-family: "Segoe UI";
+    font-size: 14px;
+    color: #000;
+}
+
+QMenu, QMessageBox {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #b8d8e6, stop:1 #f1f9ff);
+}
+
+QMainWindow {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #b8d8e6, stop:1 #f1f9ff);
+}
+
+QPushButton {
+    border: 1px solid #3399ff;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #3399ff;
+    color: white;
+}
+
+QPushButton:hover {
+    background-color: #57b4ff;
+}
+
+QPushButton:pressed {
+    background-color: #2288cc;
+}
+
+QLineEdit, QTextEdit, QPlainTextEdit {
+    border: 1px solid #3399ff;
+    border-radius: 5px;
+    background: #ffffff;
+}
+
+QScrollBar:vertical {
+    border: none;
+    background: #eee;
+    width: 14px;
+    margin: 15px 0 15px 0;
+    border-radius: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #ccc;
+    min-height: 30px;
+    border-radius: 7px;
+}
+
+QScrollBar::add-line:vertical {
+    border: none;
+    background: none;
+    height: 15px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+    height: 15px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+    width: 3px;
+    height: 3px;
+    background: none;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollArea{
+    background: none;
+}
+QVBoxLayout{
+    background: none;
+}
+
+QLabel {
+    color: #2c2c2c; // темно-серый цвет текста метки
+}
+
+QMenuBar {
+    background-color: #3f51b5; //синий цвет панели меню
+    color: white; // белый цвет текста пунктов меню
+}
+
+QMenuBar::item {
+    background-color: transparent; // прозрачный фон для каждого пункта меню
+}
+
+QMenuBar::item:selected {
+    background-color: #283593; // цвет фона выбранного пункта меню
+}
+
+QStatusBar {
+    background-color: #3f51b5; //синий цвет фона для строки состояния
+    color: white; // белый цвет текста на строке состояния
+}
+
+

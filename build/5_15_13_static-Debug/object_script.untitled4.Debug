@@ -1,0 +1,15 @@
+debug/holodwindow.o
+debug/main.o
+debug/mainwindow.o
+debug/qdialogusers.o
+debug/sendmessageuser.o
+debug/socketmanager.o
+debug/userchatbutton.o
+debug/untitled4_plugin_import.o
+debug/qrc_resources.o
+debug/moc_holodwindow.o
+debug/moc_mainwindow.o
+debug/moc_qdialogusers.o
+debug/moc_sendmessageuser.o
+debug/moc_socketmanager.o
+debug/moc_userchatbutton.o
