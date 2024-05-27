@@ -43,50 +43,57 @@ void HolodWindow::onConnected()
     requestUserChats();
 }
 
-// Send command with message to the server
+// Объект socketManager отправляет команду и соответствующее сообщение серверу.
 void HolodWindow::sendCommand(const QString &command, const QString &message) {
     socketManager->writeData(command, message);
 }
 
+// Эта функция выполняется при получении данных от сервера
 void HolodWindow::onReadyRead(const QByteArray &receivedData) {
+    // Выводим имя пользователя в консоль
     qDebug() << m_username;
-    // Prepare the widget and layout for the chats
+    // Создаем новый виджет и макет для чатов
     QWidget *scrollWidget = new QWidget;
     QVBoxLayout *scrollLayout = new QVBoxLayout(scrollWidget);
+    // Устанавливаем белый цвет фона виджета
     scrollWidget->setStyleSheet("background-color: #fff;");
+    // Устанавливаем выравнивание элементов макета по верхнему краю
     scrollLayout->setAlignment(Qt::AlignTop);
 
-    // Parse the response data
+    // Разбиваем полученные данные на составные части
     QStringList responseParts = QString(receivedData).split("\n");
 
+    // Сохраняем все чаты в QMap
     QMap<QDateTime, QPair<QString, QString>> maps;
 
+    // Итерируемся по каждому чату в полученных данных
     for (const QString &chatInfo : responseParts) {
-        // Skip empty names
+        // Пропускаем пустые имена
         if (chatInfo.trimmed().isEmpty())
             continue;
 
-        // Split the info into username and message
+        // Разбиваем информацию чата на имя пользователя и сообщение
         QStringList chatParts = chatInfo.split("|");
         QString chatName = chatParts[0].trimmed();
         QString lastMessage = chatParts.size() > 2 ? chatParts[1] : "Нет сообщений";
         QString messageTime = chatParts.size() > 2 ? chatParts[2] : "";
         if (chatName == "") chatName = m_username;
 
-        // Add to map
+        // Добавляем информацию об этом чате в QMap
         maps[QDateTime::fromString(messageTime, "yyyy/MM/dd HH:mm:ss")] = QPair<QString, QString>(chatName, lastMessage);
     }
 
-    // Create the button for the chat
+    // Преобразуем QMap в map из стандартной библиотеки C++
     std::map<QDateTime, QPair<QString, QString>> stdMap = maps.toStdMap();
 
-    // Create the button for the chat in reverse order
+    // Итерируемся через map и создаем кнопку для каждого чата
     for(auto i = stdMap.rbegin(); i != stdMap.rend(); i++) {
         UserChatButton *chatButton = createChatButton(i->second.first, i->second.second, i->first);
+        // Добавляем чат-кнопку в макет
         scrollLayout->addWidget(chatButton);
     }
 
-    // Update the chat layout with the new widgets
+    // Обновляем макет чата с новыми виджетами-кнопками
     updateChatLayout(scrollWidget);
 }
 

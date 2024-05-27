@@ -1,5 +1,3 @@
-// qdialogusers.cpp
-
 #include "qdialogusers.h"
 #include "ui_qdialogusers.h"
 #include <QThread>
@@ -47,15 +45,8 @@ void QDialogUsers::on_pushButton_clicked()
     SendMessageUser* newMessage = new SendMessageUser(this);
     newMessage->setMessage(text);
     QString timestamp = QDateTime::currentDateTime().toString("yyyy/MM/dd HH:mm:ss");
-    //m_lastUpdateTime = QDateTime::fromString(timestamp, "yyyy/MM/dd HH:mm:ss");
     newMessage->setTimestamp(timestamp);
     qDebug() << timestamp;
-/*
-    QHBoxLayout* messageLayout = new QHBoxLayout();
-    messageLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum));
-    messageLayout->addWidget(newMessage);
-    QVBoxLayout *layout = qobject_cast<QVBoxLayout *>(ui->OutputArea->widget()->layout());
-    layout->addLayout(messageLayout);*/
 
     ui->SendMessageTB->clear();
 

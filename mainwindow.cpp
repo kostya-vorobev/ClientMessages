@@ -48,12 +48,10 @@ void MainWindow::on_SendB_clicked()
 
 void MainWindow::onConnected() {
     qDebug() << "Connected!";
-    // В этом месте возможна дальнейшая обработка, например, переход на другой экран
 }
 
 void MainWindow::onDisconnected() {
     qDebug() << "Disconnected!";
-    // Обработать отключение здесь
 }
 
 void MainWindow::onReadyRead() {
@@ -76,7 +74,6 @@ void MainWindow::onReadyRead() {
 
 void MainWindow::onError(QAbstractSocket::SocketError socketError) {
     qDebug() << "Error: " << socketError;
-    // обработать ошибку здесь.
 }
 
 
